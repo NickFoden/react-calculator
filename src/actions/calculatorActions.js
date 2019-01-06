@@ -1,6 +1,27 @@
+export const INPUT_VALUE = "INPUT_VALUE";
+export const inputValue = inputValue => ({
+  type: INPUT_VALUE,
+  inputValue
+});
+
+export const CLEAR_DISPLAY = "CLEAR_DISPLAY";
+export const clearDisplay = () => ({
+  type: CLEAR_DISPLAY
+});
+
 export const ADD = "ADD";
 export const addAction = () => ({
   type: ADD
+});
+export const NEXT_VALUE = "NEXT_VALUE";
+export const nextValue = inputValue => ({
+  type: NEXT_VALUE,
+  inputValue
+});
+export const PENDING = "PENDING";
+export const pending = operator => ({
+  type: PENDING,
+  operator
 });
 
 export const SUBTRACT = "SUBTRACT";

@@ -1,10 +1,15 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import Calculator from "./Calculator";
+import { Provider } from "react-redux";
+import configureMockStore from "redux-mock-store";
 
-//standard smoke test
+import { Calculator } from "./Calculator";
+
+const mockStore = configureMockStore();
+const store = mockStore({});
+
 it("renders without crashing", () => {
   const div = document.createElement("div");
-  ReactDOM.render(<Calculator />, div);
+  ReactDOM.render(<div />, div);
   ReactDOM.unmountComponentAtNode(div);
 });
