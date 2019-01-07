@@ -118,7 +118,7 @@ class Calculator extends Component {
   render() {
     return (
       <div className="calc-container">
-        Calculator w/ unit tests
+        Reagieren Rechner
         <ReadOut currentDisplay={this.props.currentDisplay} />
         <div className="calc-body">
           <button onClick={e => this.props.onClear()}>clear</button>
