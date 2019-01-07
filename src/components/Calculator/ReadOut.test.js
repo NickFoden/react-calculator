@@ -1,8 +1,10 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import ReactDOMServer from "react-dom/server";
 import "jest-dom/extend-expect";
 import ReadOut from "./ReadOut";
 import { render } from "react-testing-library";
+import { axe, toHaveNoViolations } from "jest-axe";
 import "react-testing-library/cleanup-after-each";
 
 it("ReadOut renders without crashing", () => {
@@ -21,4 +23,14 @@ it("ReadOut should show display string  minus leading zero", () => {
 it("ReadOut should show - at start of string", () => {
   const { getByTestId } = render(<ReadOut currentDisplay={"-55"} />);
   expect(getByTestId("readout-div")).toHaveTextContent("-55");
+});
+
+expect.extend(toHaveNoViolations);
+//Check if component is accesible with Axe
+it("Display is accesible check with axe", async () => {
+  const container = ReactDOMServer.renderToString(
+    <ReadOut currentDisplay={"222"} />
+  );
+  const results = await axe(container);
+  expect(results).toHaveNoViolations();
 });

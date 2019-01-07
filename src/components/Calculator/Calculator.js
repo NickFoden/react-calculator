@@ -99,23 +99,28 @@ class Calculator extends Component {
     this.props.updateTotal(newTotal.toString());
   };
   retrieveMemory = () => {
-    const memoryLength = this.props.memory.length;
     let index = 0;
-    if (this.props.currentMemory <= memoryLength) {
+    const memoryLength = this.props.memory.length;
+    if (memoryLength === 0) {
+      return console.log("No Memories");
+    }
+    if (this.props.currentMemory === 0) {
+      index = memoryLength - 1;
+      this.props.memoryRetrieve(this.props.memory[index]);
+      this.props.updateCurrentMemoryIndex(index);
+    } else if (this.props.currentMemory <= memoryLength) {
       index = this.props.currentMemory - 1;
       this.props.memoryRetrieve(this.props.memory[index]);
-    } else if (this.props.currentMemory === 0) {
-      index = memoryLength;
+      this.props.updateCurrentMemoryIndex(index);
     }
-    this.props.updateCurrentMemoryIndex(index);
   };
 
   render() {
     return (
-      <div>
-        Calculator
+      <div className="calc-container">
+        Calculator w/ unit tests
         <ReadOut currentDisplay={this.props.currentDisplay} />
-        <div className="calc-container">
+        <div className="calc-body">
           <button onClick={e => this.props.onClear()}>clear</button>
           <button onClick={e => this.changeNegative(e)}> +/-</button>
           <button onClick={e => this.clickOperator(e, "/")}> /</button>

@@ -1,5 +1,6 @@
 .readout-div {
-  background-color: lightgray;
+  background-color: lightslategray;
+  color: black;
   text-align: right;
   min-height: 22px;
   width: 100%;
